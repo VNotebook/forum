@@ -17,9 +17,9 @@ class User {
             boolean hasUpperCase, hasLowerCase, hasNumber
             hasLowerCase = hasNumber = hasUpperCase = false
             password.each({
-                hasUpperCase = hasUpperCase || Character.isUpperCase(it)
-                hasLowerCase = hasLowerCase || Character.isLowerCase(it)
-                hasNumber = hasNumber || Character.isDigit(it)
+                hasUpperCase = hasUpperCase || Character.isUpperCase(it.charAt(0))
+                hasLowerCase = hasLowerCase || Character.isLowerCase(it.charAt(0))
+                hasNumber = hasNumber || Character.isDigit(it.charAt(0))
             })
             return hasNumber && hasUpperCase && hasLowerCase
         }
