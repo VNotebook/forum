@@ -2,7 +2,7 @@ package foro
 
 class File {
     String fileType
-    Byte[] content
+    byte[] content
     double size
 
     static constraints = {
@@ -10,7 +10,7 @@ class File {
             def tokens = fileType.split("/") as List
             return token.size() >= 2 && tokens.every({it.length() > 0})
         }
-        size max: 10 * 1024 * 1024
+        size max: (double)(10 * 1024 * 1024)
     }
 
     def download() {
