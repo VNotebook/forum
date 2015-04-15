@@ -6,7 +6,10 @@ class Post {
     Date lastUpdate
     boolean itsAllowed
 
+    static hasMany = [files : File]
+
     static constraints = {
+        hasMany nullable: true
         topic size: 3..50
         dataCreated min: new Date()
         lastUpdate min: new Date()
