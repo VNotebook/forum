@@ -6,13 +6,17 @@ class Post {
     Date lastUpdated
     boolean itsAllowed
 
-    static hasMany = [files : File]
+    static belongsTo = [owner : Regular, forum : Forum]
 
     static constraints = {
-        files nullable: true
         topic size: 3..50
         dataCreated min: new Date()
         lastUpdated min: new Date()
+    }
+
+    static mapping = {
+        owner column: 'owner_id'
+        forum column: 'fatherForum_id'
     }
 
     def comment() {
@@ -25,19 +29,5 @@ class Post {
 
     def share() {
         // TODO: implement share
-    }
-
-    def beforeInsert(){
-        dateCreated=new Date()
-    }
-
-    def beforeUpdate(){
-        lastUpdated=new Date()
-    }
-
-    def beforeDelete(){
-        File.withNewSession{
-            files*.delete()
-        }
     }
 }

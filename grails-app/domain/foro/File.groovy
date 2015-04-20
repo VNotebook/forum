@@ -5,12 +5,18 @@ class File {
     byte[] content
     double size
 
+    static belongsTo = [post : Post]
+
     static constraints = {
         fileType validator: {fileType ->
             def tokens = fileType.split("/") as List
             return token.size() >= 2 && tokens.every({it.length() > 0})
         }
         size max: (double)(10 * 1024 * 1024)
+    }
+
+    static mapping = {
+        post column: 'post_belongs_id'
     }
 
     def download() {
