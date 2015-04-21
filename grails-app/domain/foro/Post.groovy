@@ -6,6 +6,7 @@ class Post {
     Date lastUpdated
     boolean itsAllowed
 
+    static hasMany = [files : File]
     static belongsTo = [owner : Regular, forum : Forum]
 
     static constraints = {

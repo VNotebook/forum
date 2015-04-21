@@ -5,6 +5,8 @@ class Forum {
     Date dateCreated
     String category
 
+    static hasMany = [post : Post]
+
     static constraints = {
         name size: 3..20, unique: true
         dateCreated min: new Date()

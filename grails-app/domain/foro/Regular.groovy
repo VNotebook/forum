@@ -5,6 +5,8 @@ class Regular extends User {
     int strikesNumber
     int starsNumber
 
+    static hasMany = [posts : Post]
+
     static constraints = {
         postViews min: 0
         strikesNumber min: 0, max: 3
