@@ -2,7 +2,7 @@ package foro
 
 class Post {
     String topic
-    Date dataCreated
+    Date dateCreated
     Date lastUpdated
     boolean itsAllowed
 
@@ -11,7 +11,7 @@ class Post {
 
     static constraints = {
         topic size: 3..50
-        dataCreated min: new Date()
+        dateCreated min: new Date()
         lastUpdated min: new Date()
     }
 

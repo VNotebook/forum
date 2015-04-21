@@ -10,7 +10,7 @@ class File {
     static constraints = {
         fileType validator: {fileType ->
             def tokens = fileType.split("/") as List
-            return token.size() >= 2 && tokens.every({it.length() > 0})
+            return tokens.size() >= 2 && tokens.every({it.length() > 0})
         }
         size max: (double)(10 * 1024 * 1024)
     }

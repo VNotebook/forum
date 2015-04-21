@@ -5,6 +5,8 @@ class Forum {
     Date dateCreated
     String category
 
+    Admin admin
+
     static hasMany = [post : Post]
 
     static constraints = {
