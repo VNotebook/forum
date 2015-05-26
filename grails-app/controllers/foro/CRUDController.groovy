@@ -1,11 +1,12 @@
 package foro
 
-import grails.converters.JSON
+import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 abstract class CRUDController {
-    static allowedMethods = [create: "POST", update: "POST", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE",
+                             "create": "GET", "edit": "GET", "show": "GET"]
 
     def beforeInterceptor = {
         println "Se va a ejecutar la acción: ${actionUri}"
@@ -31,23 +32,31 @@ abstract class CRUDController {
     }
 
     def index() {
-        render domainClass.list() as JSON
+        respond domainClass.list()
     }
 
-    def get(int id) {
+    def create() {
+        respond createInstance()
+    }
+
+    def show(int id) {
         def instance = domainClass.get(id)
+        if (!instance)
+            notFound()
+        else
+            respond instance
+    }
 
-        if (!instance) {
-            println("No user with id $id")
-            render "No such item"
-            return
-        }
-
-        render domainClass.get(id) as JSON
+    def edit(int id) {
+        def instance = domainClass.get(id)
+        if (!instance)
+            notFound()
+        else
+            respond instance
     }
 
     @Transactional
-    def create() {
+    def save() {
         def instance = createInstance()
 
         if (!instance) return
@@ -56,11 +65,11 @@ abstract class CRUDController {
 
         if (!result) {
             println("Errors while creating entity: " + instance.errors)
-            render "Errors sent to console"
+            respond instance.errors, view: 'create'
             return
         }
 
-        render "Ok"
+        redirect instance
     }
 
     @Transactional
@@ -69,7 +78,7 @@ abstract class CRUDController {
 
         if (!instance) {
             println("Entity with id ${params.id} not found")
-            render "No item with such id"
+            notFound()
             return
         }
 
@@ -81,11 +90,11 @@ abstract class CRUDController {
 
         if (!result) {
             println("Errors while updating entity: " + instance.errors)
-            render "Errors sent to console"
+            respond instance.errors, view: 'edit'
             return
         }
 
-        render "Ok"
+        redirect instance
     }
 
     @Transactional
@@ -94,12 +103,21 @@ abstract class CRUDController {
 
         if (instance == null) {
             println("No user with id ${params.id}")
-            render "No such item"
+            notFound()
             return
         }
 
         instance.delete flush:true
 
-        render "Ok"
+        redirect action: "index", method: "GET"
+    }
+
+    protected void notFound() {
+        request.withFormat {
+            form multipartForm {
+                redirect action: "index", method: "GET"
+            }
+            '*' { render status: NOT_FOUND }
+        }
     }
 }

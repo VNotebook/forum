@@ -7,7 +7,7 @@ class Forum {
 
     Admin admin
 
-    static hasMany = [post : Post]
+    static hasMany = [posts : Post]
 
     static constraints = {
         name size: 3..20, unique: true
