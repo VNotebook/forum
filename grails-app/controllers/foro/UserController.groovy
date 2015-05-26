@@ -1,5 +1,7 @@
 package foro
 
-class UserController {
-    static scaffold = User
+class UserController extends CRUDController {
+    def UserController() {
+        super(User) // pun intended :)
+    }
 }

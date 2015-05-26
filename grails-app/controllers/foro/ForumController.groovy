@@ -1,5 +1,7 @@
 package foro
 
-class ForumController {
-    static scaffold = Forum
+class ForumController extends CRUDController {
+    ForumController() {
+        super(Forum)
+    }
 }

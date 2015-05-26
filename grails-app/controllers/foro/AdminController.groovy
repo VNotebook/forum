@@ -1,5 +1,7 @@
 package foro
 
-class AdminController {
-    static scaffold = Admin
+class AdminController extends CRUDController {
+    AdminController() {
+        super(Admin)
+    }
 }
