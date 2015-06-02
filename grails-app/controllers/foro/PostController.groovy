@@ -5,6 +5,14 @@ class PostController extends CRUDController {
         super(Post)
     }
 
+    def myPosts() {
+        def foreignKey = session.userId
+        def posts = Post.where {
+            owner.id == foreignKey
+        }.findAll()
+        render(view: "myPosts", model: [posts: posts])
+    }
+
     def comment() {
         def content = params.commentContent
         content = content.trim()

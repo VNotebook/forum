@@ -2,25 +2,25 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'topic', 'error')} required">
+<div class="form-group ${hasErrors(bean: postInstance, field: 'topic', 'error')} required">
     <label for="topic">
         <g:message code="post.topic.label" default="Topic"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="topic" maxlength="50" required="" value="${postInstance?.topic}"/>
+    <g:textField name="topic" maxlength="50" required="" value="${postInstance?.topic}" class="form-control"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'rate', 'error')} required">
+<div class="form-group ${hasErrors(bean: postInstance, field: 'rate', 'error')} required">
     <label for="rate">
         <g:message code="post.rate.label" default="Rate"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:field name="rate" type="number" min="0" value="${postInstance.rate}" required=""/>
+    <g:field name="rate" type="number" min="0" value="${postInstance.rate}" required="" class="form-control"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'comments', 'error')} ">
+<div class="form-group ${hasErrors(bean: postInstance, field: 'comments', 'error')} ">
     <label for="comments">
         <g:message code="post.comments.label" default="Comments"/>
 
@@ -28,7 +28,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'files', 'error')} ">
+<div class="form-group ${hasErrors(bean: postInstance, field: 'files', 'error')} ">
     <label for="files">
         <g:message code="post.files.label" default="Files"/>
 
@@ -46,32 +46,32 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'forum', 'error')} required">
+<div class="form-group ${hasErrors(bean: postInstance, field: 'forum', 'error')} required">
     <label for="forum">
         <g:message code="post.forum.label" default="Forum"/>
         <span class="required-indicator">*</span>
     </label>
     <g:select id="forum" name="forum.id" from="${foro.Forum.list()}" optionKey="id" required=""
-              value="${postInstance?.forum?.id}" class="many-to-one"/>
+              value="${postInstance?.forum?.id}" class="many-to-one form-control"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'itsAllowed', 'error')} ">
+<div class="form-group ${hasErrors(bean: postInstance, field: 'itsAllowed', 'error')} ">
     <label for="itsAllowed">
         <g:message code="post.itsAllowed.label" default="Its Allowed"/>
 
     </label>
-    <g:checkBox name="itsAllowed" value="${postInstance?.itsAllowed}"/>
+    <g:checkBox name="itsAllowed" value="${postInstance?.itsAllowed}" class="form-control"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'owner', 'error')} required">
+<div class="form-group ${hasErrors(bean: postInstance, field: 'owner', 'error')} required">
     <label for="owner">
         <g:message code="post.owner.label" default="Owner"/>
         <span class="required-indicator">*</span>
     </label>
     <g:select id="owner" name="owner.id" from="${foro.Regular.list()}" optionKey="id" required=""
-              value="${postInstance?.owner?.id}" class="many-to-one"/>
+              value="${postInstance?.owner?.id}" class="many-to-one form-control"/>
 
 </div>
 

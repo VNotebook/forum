@@ -32,6 +32,10 @@ class FileController extends CRUDController {
     }
 
     private boolean fillFile(instance) {
+        if (!request.getFile) {
+            return false
+        }
+
         def file = request.getFile('file')
 
         if (file.empty) {

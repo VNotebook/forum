@@ -70,12 +70,12 @@
             </li>
         </g:if>
 
-        <g:if test="${forumInstance?.post}">
+        <g:if test="${forumInstance?.posts}">
             <li class="fieldcontain">
-                <span id="post-label" class="property-label"><g:message code="forum.post.label" default="Post"/></span>
+                <span id="posts-label" class="property-label"><g:message code="forum.posts.label" default="Posts"/></span>
 
-                <g:each in="${forumInstance.post}" var="p">
-                    <span class="property-value" aria-labelledby="post-label"><g:link controller="post" action="show"
+                <g:each in="${forumInstance.posts}" var="p">
+                    <span class="property-value" aria-labelledby="posts-label"><g:link controller="posts" action="show"
                                                                                       id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
                 </g:each>
 
@@ -85,9 +85,9 @@
     </ol>
     <g:form url="[resource: forumInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
-            <g:link class="edit" action="edit" resource="${forumInstance}"><g:message code="default.button.edit.label"
+            <g:link class="edit btn btn-default" action="edit" resource="${forumInstance}"><g:message code="default.button.edit.label"
                                                                                       default="Edit"/></g:link>
-            <g:actionSubmit class="delete" action="delete"
+            <g:actionSubmit class="delete btn btn-danger" action="delete"
                             value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
         </fieldset>

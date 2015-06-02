@@ -2,40 +2,40 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: fileInstance, field: 'fileType', 'error')} required">
+<div class="form-group ${hasErrors(bean: fileInstance, field: 'fileType', 'error')} required">
     <label for="fileType">
         <g:message code="file.fileType.label" default="File Type"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="fileType" required="" value="${fileInstance?.fileType}"/>
+    <g:textField name="fileType" required="" value="${fileInstance?.fileType}" class="form-control"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: fileInstance, field: 'size', 'error')} required">
+<div class="form-group ${hasErrors(bean: fileInstance, field: 'size', 'error')} required">
     <label for="size">
         <g:message code="file.size.label" default="Size"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:field name="size" value="${fieldValue(bean: fileInstance, field: 'size')}" required=""/>
+    <g:field name="size" value="${fieldValue(bean: fileInstance, field: 'size')}" required="" class="form-control"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: fileInstance, field: 'content', 'error')} required">
+<div class="form-group ${hasErrors(bean: fileInstance, field: 'content', 'error')} required">
     <label for="content">
         <g:message code="file.content.label" default="Content"/>
         <span class="required-indicator">*</span>
     </label>
-    <input type="file" id="content" name="content"/>
+    <input type="file" id="content" name="content" class="form-control"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: fileInstance, field: 'post', 'error')} required">
+<div class="form-group ${hasErrors(bean: fileInstance, field: 'post', 'error')} required">
     <label for="post">
         <g:message code="file.post.label" default="Post"/>
         <span class="required-indicator">*</span>
     </label>
     <g:select id="post" name="post.id" from="${foro.Post.list()}" optionKey="id" required=""
-              value="${fileInstance?.post?.id}" class="many-to-one"/>
+              value="${fileInstance?.post?.id}" class="many-to-one form-control"/>
 
 </div>
 
