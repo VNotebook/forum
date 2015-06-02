@@ -15,7 +15,7 @@ class LoginService {
             session.authStatus = "logged"
 
             // Internal additions
-            session.userId = 2
+            session.userId = user.id
             session.userName = user.username
         }
 
