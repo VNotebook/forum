@@ -1,6 +1,7 @@
 package foro
 
 class User {
+    //static searchable = [only: ['username']]
 
     String name
     String lastname
@@ -13,7 +14,7 @@ class User {
         lastname blank: false, size: 3..50
         age blank: false, min: 13
         username blank: false, unique: true
-        password blank: false, minSize: 8, validator: { password ->
+        password blank: false, minSize: 8/*, validator: { password -> // Deshabilitado para usar MD5
             boolean hasUpperCase, hasLowerCase, hasNumber
             hasLowerCase = hasNumber = hasUpperCase = false
             password.each({
@@ -22,6 +23,6 @@ class User {
                 hasNumber = hasNumber || Character.isDigit(it.charAt(0))
             })
             return hasNumber && hasUpperCase && hasLowerCase
-        }
+        }*/
     }
 }
