@@ -1,8 +1,6 @@
 package foro
 
 class User {
-    //static searchable = [only: ['username']]
-
     String name
     String lastname
     int age

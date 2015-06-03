@@ -32,22 +32,16 @@ class UserController extends CRUDController {
         def password = params.password
 
         if (!username || !password) {
-            render (action: "login")
+            redirect (action: "login")
             return
         }
 
         def result = loginService.login(session, params)
 
         if (result == null) {
-            render(action: "login", model: [error: "Usuario o contraseña incorrecta"])
+            render (model: [error: "Usuario o contraseña incorrecta"], view: 'login')
             return
         }
-
-/*        session.authStatus = "logged"
-        // Temporarily setting a specific id manually
-        session.userId = 2
-        def user = User.get(session.userId)
-        session.userName = user.username*/
 
         redirect(action: "index", controller: "index")
     }

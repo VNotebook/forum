@@ -1,8 +1,6 @@
 package foro
 
 class Forum {
-    //static searchable = [only: ['name']]
-
     String name
     Date dateCreated
     String category

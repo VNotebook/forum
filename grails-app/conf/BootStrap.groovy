@@ -3,11 +3,12 @@ import foro.*
 class BootStrap {
 
     def init = { servletContext ->
-        def user = new Regular(name: "The User", lastname: "The last", age: 20, username: "user", password: "qwertY12")
+        def user = new Regular(name: "The User", lastname: "The last", age: 20, username: "user",
+                password: SecurityUtils.md5("qwertY12"))
         user.save()
 
-        def admin = new Admin(name: "The Admin", lastname: "The last", age: 20, username: "admin", password: "qwertY12",
-            level: 1, rating: 5)
+        def admin = new Admin(name: "The Admin", lastname: "The last", age: 20, username: "admin",
+                password: SecurityUtils.md5("qwertY12"), level: 1, rating: 5)
 
         def forum = new Forum(name: "Forum 1", category: "Forums")
         admin.addToForums(forum)

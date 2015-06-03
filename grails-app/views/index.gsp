@@ -24,6 +24,7 @@
                         </ul>
                         <li><g:link controller="post">Entradas (Post)</g:link></li>
                         <li><g:link controller="file">Archivos</g:link></li>
+                        <li><g:link controller="mail">Correo de prueba</g:link></li>
                     </ul>
                 </div>
             </div>
